@@ -2,7 +2,7 @@
   "name": "react-stopwatch",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://VanessaKasminoff.github.io/react-stopwatch",
+  "homepage": "https://vanessakasminoff.github.io/react-stopwatch",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
