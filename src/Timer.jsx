@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 
 function Timer() {
     let seconds = 90
-    const [countdown, setCountdown] = useState(seconds)
+    const [countdown, setCountdown] = useState(0)
     const intervalIdRef = useRef()
 
     useEffect(() => {
@@ -29,7 +29,16 @@ function Timer() {
     }
     
     return (
-        <h2>Countdown: {formatTime()} </h2>
+        <div className="stopwatch-timer">
+            <div className="display">
+                {formatTime()}
+            </div>
+            <div className="controls">
+                <button className="start-button">Start</button>
+                <button className="stop-button">Stop</button>
+                <button className="reset-button">Reset</button>
+            </div>
+        </div>
     )
 }
 

@@ -19,7 +19,7 @@ body {
   margin-bottom: 20px;
 }
 
-.stopwatch {
+.stopwatch-timer {
   display: flex;
   flex-direction: column;
   align-items: center;

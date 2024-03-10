@@ -57,7 +57,7 @@ function Stopwatch() {
     };
 
     return (
-        <div className='stopwatch'>
+        <div className='stopwatch-timer'>
             <div className='display'>
                 {formatTime()}
             </div>
