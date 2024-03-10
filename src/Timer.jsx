@@ -1,9 +1,13 @@
 import React, {useState, useEffect, useRef} from "react";
 
 function Timer() {
-    let seconds = 10
     const [isRunning, setIsRunning] = useState(false)
-    const [countdown, setCountdown] = useState(seconds)
+    const [minInput, setMinInput] = useState(0)
+    const [secInput, setSecInput] = useState(0)
+
+    let inputToSeconds = (minInput * 60) + Number(secInput)
+
+    const [countdown, setCountdown] = useState(0)
     const intervalIdRef = useRef()
 
     useEffect(() => {
@@ -23,7 +27,13 @@ function Timer() {
     })
 
     function start() {
-        setIsRunning(true)
+        if (countdown == 0) {
+            setCountdown(inputToSeconds)
+            setIsRunning(true)
+        } else {
+            setIsRunning(true)
+        }
+        
     }
 
     function stop(){
@@ -49,6 +59,8 @@ function Timer() {
             <div className="display">
                 {formatTime()}
             </div>
+            <input type="number" id="minutes" name="minutes" value={minInput} onInput={e => setMinInput(e.target.value)} /><span>min</span>
+            <input type="number" id="seconds" name="seconds" value={secInput} onInput={e => setSecInput(e.target.value)} /><span>sec</span>
             <div className="controls">
                 <button className="start-button" onClick={start}>Start</button>
                 <button className="stop-button" onClick={stop} >Pause</button>
