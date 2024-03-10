@@ -29,6 +29,17 @@ body {
   padding: 30px;
 }
 
+.input-container input[type=number] {
+  width: 10%;
+  margin: 10px;
+  font-size: 2rem;
+}
+
+.input-container span {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
 .display {
   font-size: 5rem;
   font-family: monospace;
