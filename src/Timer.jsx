@@ -60,8 +60,8 @@ function Timer() {
                 {formatTime()}
             </div>
             <div className="input-container">
-                <input type="number" id="minutes" name="minutes" value={minInput} onInput={e => setMinInput(e.target.value)} /><span>min</span>
-                <input type="number" id="seconds" name="seconds" value={secInput} onInput={e => setSecInput(e.target.value)} /><span>sec</span>
+                <input type="number" id="minutes" name="minutes" value={minInput} onInput={e => setMinInput(e.target.value)} min={0} /><span>min</span>
+                <input type="number" id="seconds" name="seconds" value={secInput} onInput={e => setSecInput(e.target.value)} min={0}/><span>sec</span>
             </div>
             <div className="controls">
                 <button className="start-button" onClick={start}>Start</button>
