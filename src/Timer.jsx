@@ -1,22 +1,38 @@
 import React, {useState, useEffect, useRef} from "react";
 
 function Timer() {
-    let seconds = 90
-    const [countdown, setCountdown] = useState(0)
+    let seconds = 10
+    const [isRunning, setIsRunning] = useState(false)
+    const [countdown, setCountdown] = useState(seconds)
     const intervalIdRef = useRef()
 
     useEffect(() => {
+        if (isRunning) {
         intervalIdRef.current = setInterval(() => {
             setCountdown(prev => prev - 1)
         }, 1000)
+    }
         return () => clearInterval(intervalIdRef.current)
-    }, [])
+    }, [isRunning])
 
     useEffect(() => {
         if (countdown <= 0) {
             clearInterval(intervalIdRef.current)
+            setIsRunning(false)
         }
     })
+
+    function start() {
+        setIsRunning(true)
+    }
+
+    function stop(){
+        setIsRunning(false);
+    }
+
+    function reset() {
+        setCountdown(0)
+    }
 
     function formatTime() {
         let minutes = Math.floor(countdown / 60)
@@ -34,9 +50,9 @@ function Timer() {
                 {formatTime()}
             </div>
             <div className="controls">
-                <button className="start-button">Start</button>
-                <button className="stop-button">Stop</button>
-                <button className="reset-button">Reset</button>
+                <button className="start-button" onClick={start}>Start</button>
+                <button className="stop-button" onClick={stop} >Pause</button>
+                <button className="reset-button" onClick={reset} >Reset</button>
             </div>
         </div>
     )
