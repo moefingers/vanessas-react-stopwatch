@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from "react";
+import sound from './assets/Cute-Ringtone.wav'
 
 function Timer() {
     const [isRunning, setIsRunning] = useState(false)
@@ -7,7 +8,7 @@ function Timer() {
 
     let inputToSeconds = (minInput * 60) + Number(secInput)
 
-    const [countdown, setCountdown] = useState(0)
+    const [countdown, setCountdown] = useState(300)
     const intervalIdRef = useRef()
 
     useEffect(() => {
@@ -26,22 +27,27 @@ function Timer() {
         }
     })
 
+    useEffect(() => {
+        if (countdown === 0 && !isRunning) {
+            playTimerSound(0.2)
+        }
+    }, [countdown, isRunning])
+
     function start() {
-        if (countdown == 0) {
+        if (countdown != inputToSeconds && inputToSeconds != 0) {
             setCountdown(inputToSeconds)
             setIsRunning(true)
+            stopTimerSound()
         } else {
             setIsRunning(true)
         }
         
     }
 
-    function stop(){
-        setIsRunning(false);
-    }
-
     function reset() {
-        setCountdown(0)
+        setCountdown(300)
+        setIsRunning(false)
+        stopTimerSound()
     }
 
     function formatTime() {
@@ -53,9 +59,25 @@ function Timer() {
 
         return `${minutes}:${seconds}`
     }
+
+    let audio;
+
+    function playTimerSound(volume) {
+            audio = new Audio(sound)
+            audio.volume = volume
+            audio.loop = true
+            return audio.play()
+    }
+
+    function stopTimerSound() {
+        if (audio) {
+            audio.pause()
+        }
+    }
     
     return (
         <div className="stopwatch-timer">
+            {countdown === 0 && !isRunning && <div className="timer-end-container"><p>TIMER HAS ENDED!</p></div>}
             <div className="display">
                 {formatTime()}
             </div>
@@ -65,7 +87,6 @@ function Timer() {
             </div>
             <div className="controls">
                 <button className="start-button" onClick={start}>Start</button>
-                <button className="stop-button" onClick={stop} >Pause</button>
                 <button className="reset-button" onClick={reset} >Reset</button>
             </div>
         </div>

@@ -1,8 +1,8 @@
+import React from "react"
 import Stopwatch from "./Stopwatch.jsx"
 import Timer from "./Timer.jsx"
 
 function App() {
-
   return (
     <div className="App">
       <h1>STOPWATCH</h1>

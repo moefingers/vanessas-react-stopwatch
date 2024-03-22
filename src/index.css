@@ -85,3 +85,11 @@ body {
 .reset-button:hover {
   background-color: rgb(129, 240, 240);
 }
+
+.timer-end-container p {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 4.5rem;
+  color: rgb(253, 87, 45);
+  text-shadow: 4px 4px 4px rgba(255, 137, 107, 0.728);
+  margin: 0 0 10px 0;
+}
