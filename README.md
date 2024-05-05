@@ -1,6 +1,3 @@
-all credit due to [Vanessa Kasminoff](https://github.com/VanessaKasminoff/react-stopwatch)
-I did NOTHING here except deploy to GH-pages
-
 # REACT-STOPWATCH
 Cute stopwatch created using React!  
 Simply press play and watch the seconds tick by~ :p  
